@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :bestpest, Bestpest.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "bestpest",
+  password: "",
   database: "bestpest_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

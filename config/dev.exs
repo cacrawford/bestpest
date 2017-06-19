@@ -36,8 +36,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :bestpest, Bestpest.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "bobsbest",
+  password: "",
   database: "bestpest_dev",
   hostname: "localhost",
   pool_size: 10
