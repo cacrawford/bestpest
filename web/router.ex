@@ -1,5 +1,6 @@
 defmodule Bestpest.Router do
   use Bestpest.Web, :router
+  use Addict.RoutesHelper
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -17,6 +18,10 @@ defmodule Bestpest.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+  end
+
+  scope "/" do
+    addict :routes
   end
 
   # Other scopes may use custom stacks.
