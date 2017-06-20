@@ -14,10 +14,11 @@ defmodule Bestpest.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Bestpest do
+  scope "/customer", Bestpest do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", CustomerController, :index
+    post "/", CustomerController, :create
   end
 
   scope "/" do

@@ -1,4 +1,4 @@
-defmodule Bestpest.PageController do
+defmodule Bestpest.CustomerController do
   use Bestpest.Web, :controller
 
   def index(conn, _params) do

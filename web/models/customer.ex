@@ -23,7 +23,20 @@ defmodule Bestpest.Customer do
 
     def changeset(struct, params \\ %{}) do
       struct
-      |> cast(params, [:customerId])
-      |> validate_required([:customerId])
+      |> cast(params, [
+             :ref_id,
+             :active,
+             :first_name,
+             :last_name,
+             :type,
+             :billed,
+             :corporate_code,
+             :lead_name,
+             :cancel_reason,
+             :subdivision,
+             :signup_date,
+             :cancel_date
+         ])
+      |> validate_required([:ref_id])
     end
 end
