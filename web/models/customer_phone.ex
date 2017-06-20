@@ -6,6 +6,7 @@ defmodule Bestpest.CustomerPhone do
       field :phone_number, :string
       field :type, :string              # Home, Work, Cell
       field :primary, :boolean
+      field :use_for_text, :boolean
 
       timestamps()
     end

@@ -5,6 +5,8 @@ defmodule Bestpest.CustomerComment do
     belongs_to :customer, Bestpest.Customer
     field :comment, :string
     field :source, :string   # comments, notes, po
+    field :date_added, Ecto.DateTime
+    field :user, :string
 
     timestamps()
   end
