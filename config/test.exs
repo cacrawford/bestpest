@@ -12,7 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :bestpest, Bestpest.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "bestpest",
+  username: "bobsbest",
   password: "",
   database: "bestpest_test",
   hostname: "localhost",

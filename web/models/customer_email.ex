@@ -1,4 +1,4 @@
-defmodule CustomerEmail do
+defmodule Bestpest.CustomerEmail do
   use Bestpest.Web, :model
 
   schema "customer_emails" do
@@ -11,8 +11,9 @@ defmodule CustomerEmail do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:customerId])
-    |> validate_required([:customerId])
+    |> cast(params, [:email, :primary])
+    |> validate_required([:email])
+    |> validate_format(:email, ~r/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
   end
 
 end

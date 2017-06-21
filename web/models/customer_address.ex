@@ -17,7 +17,26 @@ defmodule Bestpest.CustomerAddress do
 
     def changeset(struct, params \\ %{}) do
       struct
-      |> cast(params, [:customerId])
-      |> validate_required([:customerId])
+      |> cast(params, [
+             :type,
+             :first_name,
+             :last_name,
+             :street,
+             :city,
+             :state,
+             :zip
+         ])
+      |> validate_required([
+             :type,
+             :first_name,
+             :last_name,
+             :street,
+             :city,
+             :state,
+             :zip
+         ])
+      |> validate_format(:zip, ~r/^\d{5}(?:[-\s]\d{4})?$/)
+      |> validate_format(:state, ~r/^[a-zA-Z]{2}$/)
+      |> validate_inclusion(:type, ["Business", "Residential"])
     end
 end

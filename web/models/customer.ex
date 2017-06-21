@@ -17,6 +17,7 @@ defmodule Bestpest.Customer do
       has_many :addresses, Bestpest.CustomerAddress
       has_many :phones, Bestpest.CustomerPhone
       has_many :comments, Bestpest.CustomerComment
+      has_many :emails, Bestpest.CustomerEmail
 
       timestamps()
     end
@@ -37,6 +38,6 @@ defmodule Bestpest.Customer do
              :signup_date,
              :cancel_date
          ])
-      |> validate_required([:ref_id])
+      |> validate_required([:ref_id, :type])
     end
 end
