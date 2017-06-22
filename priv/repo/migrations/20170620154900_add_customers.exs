@@ -39,6 +39,8 @@ defmodule Bestpest.Repo.Migrations.AddCustomers do
 
     create index(:customer_address, [:customer_id])
 
+    create index(:customer_address, [:customer_id])
+
     create table(:customer_phone) do
       add :customer_id, references(:customer)
       add :phone_number, :string
@@ -57,6 +59,16 @@ defmodule Bestpest.Repo.Migrations.AddCustomers do
       add :source, :string
       add :date_added, :utc_datetime
       add :user, :string
+
+      timestamps()
+    end
+
+    create index(:customer_comment, [:customer_id])
+
+    create table(:customer_email) do
+      add :customer_id, references(:customer)
+      add :email, :string
+      add :primary, :boolean, default: false
 
       timestamps()
     end
