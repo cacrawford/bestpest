@@ -37,6 +37,6 @@ defmodule Bestpest.CustomerAddress do
          ])
       |> validate_format(:zip, ~r/^\d{5}(?:[-\s]\d{4})?$/)
       |> validate_format(:state, ~r/^[a-zA-Z]{2}$/)
-      |> validate_inclusion(:type, ["Business", "Residential"])
+      |> validate_inclusion(:type, ["Billing", "Residential"])
     end
 end
