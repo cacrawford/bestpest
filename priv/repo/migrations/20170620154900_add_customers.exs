@@ -3,7 +3,7 @@ defmodule Bestpest.Repo.Migrations.AddCustomers do
 
   def change do
 
-    create table(:customer) do
+    create table(:customers) do
       add :ref_id, :integer
       add :active, :boolean
       add :first_name, :string
@@ -20,10 +20,10 @@ defmodule Bestpest.Repo.Migrations.AddCustomers do
       timestamps()
     end
 
-    create index(:customer, [:ref_id])
+    create index(:customers, [:ref_id])
 
-    create table(:customer_address) do
-      add :customer_id, references(:customer)
+    create table(:customer_addresses) do
+      add :customer_id, references(:customers)
       add :type, :string, default: "Residential"
       add :attn, :string
       add :first_name, :string
@@ -36,10 +36,10 @@ defmodule Bestpest.Repo.Migrations.AddCustomers do
       timestamps()
     end
 
-    create index(:customer_address, [:customer_id])
+    create index(:customer_addresses, [:customer_id])
 
-    create table(:customer_phone) do
-      add :customer_id, references(:customer)
+    create table(:customer_phones) do
+      add :customer_id, references(:customers)
       add :phone_number, :string
       add :type, :string, default: "Other"
       add :primary, :boolean, default: false
@@ -48,10 +48,10 @@ defmodule Bestpest.Repo.Migrations.AddCustomers do
       timestamps()
     end
 
-    create index(:customer_phone, [:customer_id])
+    create index(:customer_phones, [:customer_id])
 
-    create table(:customer_comment) do
-      add :customer_id, references(:customer)
+    create table(:customer_comments) do
+      add :customer_id, references(:customers)
       add :comment, :string, default: "Note"
       add :source, :string
       add :date_added, :utc_datetime
@@ -60,17 +60,17 @@ defmodule Bestpest.Repo.Migrations.AddCustomers do
       timestamps()
     end
 
-    create index(:customer_comment, [:customer_id])
+    create index(:customer_comments, [:customer_id])
 
-    create table(:customer_email) do
-      add :customer_id, references(:customer)
+    create table(:customer_emails) do
+      add :customer_id, references(:customers)
       add :email, :string
       add :primary, :boolean, default: false
 
       timestamps()
     end
 
-    create index(:customer_email, [:customer_id])
+    create index(:customer_emails, [:customer_id])
 
   end
 end
