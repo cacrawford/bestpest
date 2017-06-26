@@ -18,11 +18,18 @@ defmodule Bestpest.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", CustomerController, :index
-    post "/", CustomerController, :create
   end
 
   scope "/" do
     addict :routes
+  end
+
+  scope "/api/v1", Bestpest do
+    pipe_through(:api)
+
+    get "/customers", CustomerApiController, :index
+    get "/customers/:id", CustomerApiController, :show
+    post "/customers", CustomerApiController, :create
   end
 
   # Other scopes may use custom stacks.
