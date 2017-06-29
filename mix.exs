@@ -19,7 +19,7 @@ defmodule Bestpest.Mixfile do
   def application do
     [mod: {Bestpest, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :timex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -39,7 +39,9 @@ defmodule Bestpest.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:addict, "~> 0.3"},
-     {:mailgun, github: "chrismccord/mailgun", branch: "master", override: true}
+     {:mailgun, github: "chrismccord/mailgun", branch: "master", override: true},
+     {:timex, "~>3.0"},
+     {:timex_ecto, "~>3.0"}
      ]
   end
 
