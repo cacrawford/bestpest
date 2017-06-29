@@ -1,0 +1,46 @@
+{
+  "refId" : "10602",
+  "status" : true,
+  "first_name" : "Benjamin & Beth",
+  "last_name" : "Gambaro",
+  "signup_date" : "2017-06-14",
+  "cancel_date" : null,
+  "type" : "Residential",
+  "billed" : true,
+  "lead_name" : "WLA Auction Winner",
+  "corporate_code" : null,
+  "cancel_reason" : null,
+  "subdivision" : null,
+  "customer_addresses" : [
+    {
+      "first_name" : "Benjamin & Beth",
+      "last_name" : "Gambaro",
+      "street" : "14713 Seventeen Lakes Blvd.",
+      "city" : "Roanoke",
+      "state" : "TX",
+      "zip" : "76244",
+      "attn" : null,
+      "type" : "Residential"
+    }
+  ],
+  "customer_phones" : [
+    {
+      "phone_number" : "404-866-7707",
+      "type" : "Home",
+      "primary" : true
+    }
+  ],
+  "customer_emails" : [
+    {
+      "email" : "the_gambaros@Whatsit.com",
+      "primary" : true
+    }
+  ],
+  "customer_comments" : [
+    {
+      "comment" : "253sf - .24acre - WLA Auction Winner",
+      "type" : "comment",
+      "user" : "admin"
+    }
+  ]
+}
