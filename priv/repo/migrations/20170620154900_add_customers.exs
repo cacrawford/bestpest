@@ -20,7 +20,7 @@ defmodule Bestpest.Repo.Migrations.AddCustomers do
       timestamps()
     end
 
-    create index(:customers, [:ref_id])
+    create unique_index(:customers, [:ref_id])
 
     create table(:customer_addresses) do
       add :customer_id, references(:customers)
