@@ -5,29 +5,26 @@ defmodule Bestpest.CustomerApiController do
 
   def index(conn, _params) do
     customers = Repo.all(Bestpest.Customer)
-    json conn, customers
+      |> Repo.preload [:addresses, :comments, :emails, :phones]
+
+    render conn |> put_status(:ok), "index.json", customers: customers
   end
 
   def create(conn, params) do
 
-    IO.inspect(conn)
-    IO.puts("printing params")
-    IO.inspect(params)
-    IO.puts("printed params")
     changeset = Customer.changeset(%Customer{}, params)
 
     case Repo.insert(changeset) do
       {:ok, customer} ->
-        IO.inspect(customer)
-        json conn |> put_status(:created), customer
-      {:error, changeset} ->
-        IO.inspect(changeset)
-        json conn |> put_status(:bad_request), %{errors: ["Error creating customer"] }
+        customer = Repo.preload customer, [:addresses, :comments, :emails, :phones]
+        render conn |> put_status(:created), "create.json", customer: customer
+      {:error, _changeset} ->
+        render conn |> put_status(:bad_request),  %{errors: ["Error creating customer"] }
     end
   end
 
   def show(conn, %{"id" => id}) do
-    user = Repo.get(Bestpest.Customer, String.to_integer(id))
-    json conn, user
+    customer = Repo.get(Bestpest.Customer, String.to_integer(id))
+    json conn, customer
   end
 end

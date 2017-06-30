@@ -4,7 +4,7 @@ defmodule Bestpest.Repo.Migrations.AddCustomers do
   def change do
 
     create table(:customers) do
-      add :ref_id, :integer
+      add :ref_id, :string
       add :active, :boolean
       add :first_name, :string
       add :last_name, :string
