@@ -1,13 +1,27 @@
 # Bestpest
 
-To start your Phoenix app:
+Set up on your machine:
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
+  * Install elixir    https://elixir-lang.org/install.html
+  * Install postgres  https://wiki.postgresql.org/wiki/Detailed_installation_guides
+  * Create user on postgres: `createuser bobsbest`
+  * Create dev DB on postgres:   `createdb bestpest_dev`
+  * Create dev DB on postgres:   `createdb bestpest_test`
+  * type `psql`
+  * `psql> grant all privileges on database bobsbest_dev to bobsbest`
+  * `psql> grant all privileges on database bobsbest_test to bobsbest`
+  * `psql> \q` to exit
+  * Create schema on both DBs called "bobsbest"
+  * Set default schema for user bobsbest to "bobsbest"
+  * Change to project folder
+  * Get dependencies: `mix deps.get`
+  * Create tables by calling `mix ecto.migrate`
   * Install Node.js dependencies with `npm install`
-  * Start Phoenix endpoint with `mix phoenix.server`
+  * Start server by running `mix phoenix.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+
+
+
 
 Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
 
