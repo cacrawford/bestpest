@@ -1,5 +1,6 @@
 defmodule Bestpest.CustomerAddress do
     use Bestpest.Web, :model
+    alias Bestpest.Repo
 
     schema "customer_addresses" do
       belongs_to :customer, Bestpest.Customer
@@ -17,6 +18,7 @@ defmodule Bestpest.CustomerAddress do
 
     def changeset(struct, params \\ %{}) do
       struct
+      |> Repo.preload(:customer)
       |> cast(params, [
              :type,
              :first_name,
