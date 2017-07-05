@@ -8,5 +8,13 @@ defmodule Bestpest.CustomerApiView do
   def render("index.json",  %{customers: customers}) do
     customers
   end
-  
+
+  def render("error.json", %{error: error}) do
+    error
+  end
+
+  def render("index_of.json", %{customer: customer}) do
+    customer
+  end
+
 end

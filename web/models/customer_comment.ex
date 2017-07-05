@@ -1,5 +1,6 @@
 defmodule Bestpest.CustomerComment do
     use Bestpest.Web, :model
+    alias Bestpest.Repo
 
   schema "customer_comments" do
     belongs_to :customer, Bestpest.Customer
@@ -13,6 +14,7 @@ defmodule Bestpest.CustomerComment do
 
   def changeset(struct, params \\ %{}) do
     struct
+    |> Repo.preload(:customer)
     |> cast(params, [:comment, :source, :date_added, :user])
     |> validate_required([:comment])
   end

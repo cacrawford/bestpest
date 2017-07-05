@@ -1,5 +1,6 @@
 defmodule Bestpest.CustomerPhone do
     use Bestpest.Web, :model
+    alias Bestpest.Repo
 
     schema "customer_phones" do
       belongs_to :customer, Bestpest.Customer
@@ -13,6 +14,7 @@ defmodule Bestpest.CustomerPhone do
 
     def changeset(struct, params \\ %{}) do
       struct
+      |> Repo.preload(:customer)
       |> cast(params, [:phone_number, :type])
       |> validate_required([:phone_number, :type])
       |> validate_inclusion(:type, ["Home", "Work", "Cell", "Billing", "Fax", "Other"])

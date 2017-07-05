@@ -1,9 +1,9 @@
 {
-  "refId" : "10602",
+  "ref_id" : "10602",
   "status" : true,
   "first_name" : "Benjamin & Beth",
   "last_name" : "Gambaro",
-  "signup_date" : "2017-06-14",
+  "signup_date" : "2017-06-30T00:00:00.00000",
   "cancel_date" : null,
   "type" : "Residential",
   "billed" : true,
