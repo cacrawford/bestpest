@@ -1,3 +1,6 @@
+# PostgreSQL data direction
+/.postgres
+
 # App artifacts
 /_build
 /db
