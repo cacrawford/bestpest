@@ -14,13 +14,19 @@ defmodule Bestpest.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/", Bestpest do
+    pipe_through :browser
+
+    get "/", HomeController, :index
+  end
+
   scope "/customer", Bestpest do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
     get "/", CustomerController, :index
   end
 
-  scope "/" do
+  scope "/users" do
     addict :routes
   end
 
