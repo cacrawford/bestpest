@@ -2,28 +2,29 @@
 
 Set up on your machine:
 
-  * Install elixir    https://elixir-lang.org/install.html
-  * Install postgres  https://wiki.postgresql.org/wiki/Detailed_installation_guides
-  * Create user on postgres: `createuser bobsbest`
-  * Create dev DB on postgres:   `createdb bestpest_dev`
-  * Create dev DB on postgres:   `createdb bestpest_test`
-  * type `psql`
-  * `psql> grant all privileges on database bobsbest_dev to bobsbest`
-  * `psql> grant all privileges on database bobsbest_test to bobsbest`
-  * `psql> \q` to exit
-  * Create schema on both DBs called "bobsbest"
-  * Set default schema for user bobsbest to "bobsbest"
-  * Change to project folder
-  * Get dependencies: `mix deps.get`
-  * Create tables by calling `mix ecto.migrate`
-  * Install Node.js dependencies with `npm install`
-  * Start server by running `mix phoenix.server`
+* Install [Docker CE](https://docs.docker.com/engine/installation/) and [docker-compose](https://docs.docker.com/compose/install/)
+* Start the `jwilder/nginx-proxy` container: (only needs to be done once)
 
+        docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --restart always jwilder/nginx-proxy
 
+* Add `127.0.0.1     bobsbest.dev` to your `/etc/hosts` file
+* Run `docker-compose up -d`
+* Visit [bobsbest.dev](http://bobsbest.dev) to see if the connection succeeded.
 
+## Further usage
 
+To direct any `mix` commands to the app container, simply run
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+    ./mix <arguments...>
+
+If you need to run any other commands (`npm`, etc) you can connect to
+the container via shell with
+
+    docker-compose exec app /bin/bash
+
+Server logs can be accessed using
+
+    docker-compose logs app
 
 ## Learn more
 
