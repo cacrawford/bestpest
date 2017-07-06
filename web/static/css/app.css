@@ -1,1 +1,18 @@
 /* This file is for your main application css. */
+.bb-logo {
+    width: 350px;
+    height: 125px;
+    display: inline-block;
+    margin-bottom: 1em;
+    background-image: url("/images/bobs-best.png");
+    background-size: 350px 125px;
+}
+
+.at-logo {
+    width: 125px;
+    height: 125px;
+    display: inline-block;
+    margin-bottom: 1em;
+    background-image: url("/images/authentic-texan.png");
+    background-size: 125px 125px;
+}
