@@ -30,7 +30,7 @@
           <a class="navbar-brand bb-logo"></a>
           <ul class="nav nav-tabs">
             <li role="separator"></li>
-            <li role="presentation"><a href="#">Home</a></li>
+            <li role="presentation"><a href="/">Home</a></li>
             <li role="presentation>"><a href="/customers">Customers</a></li>
           </ul>
         </nav>
