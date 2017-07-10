@@ -3,6 +3,13 @@ defmodule Bestpest.CustomerApiController do
 
   alias Bestpest.Customer
 
+#  plug Addict.Plugs.Authenticated when action in [
+#    :index,
+#    :create,
+#    :show
+#  ]
+#  plug :action
+
   def index(conn, _params) do
     customers = Repo.all(Bestpest.Customer)
       |> Repo.preload([:customer_addresses, :customer_comments, :customer_emails, :customer_phones])
