@@ -25,7 +25,7 @@ defmodule Bestpest.Router do
     get "/", Bestpest.HomeController, :index
   end
 
-  scope "/customer", Bestpest do
+  scope "/customers", Bestpest do
     pipe_through :browser
 
     get "/", CustomerController, :index
