@@ -1,7 +1,23 @@
-<ul class="collection">
-  <%= for customer <- @customers do %>
-  <li class="collection-item">
-    <%= customer.first_name %> <%= customer.last_name %>
-  </li>
-  <% end %>
-</ul>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Customers</div>
+
+  <!-- Table -->
+  <table class="table">
+    <tr>
+      <th>First</th>
+      <th>Last</th>
+      <th>Type</th>
+    </tr>
+    <%= for customer <- @customers do %>
+      <tr>
+          <td><%= customer.last_name %></td>
+          <td><%= customer.first_name %></td>
+          <td><%= customer.type %></td>
+          <td><%= if (customer.active), do: "true", else: "false" %></td>
+          <td><%= link "View", to: customer_path(@conn, :show, customer) %> </td>
+          <td><%= link "Delete", to: customer_path(@conn, :delete, customer), method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
