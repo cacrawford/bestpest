@@ -9,4 +9,13 @@ defmodule Bestpest.Helper do
     |> Bestpest.User.fetch_name_by_email()
   end
 
+  def formatted_date(date) do
+    case Timex.format(date, "{YYYY}-{M}-{D}") do
+      {:ok, formatted} ->
+        formatted
+      {:error, _err} ->
+        "Unknown"
+    end
+  end
+
 end

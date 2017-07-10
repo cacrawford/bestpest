@@ -1,36 +1,23 @@
-<div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
-</div>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Customers</div>
 
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
-      </li>
-      <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
-      </li>
-    </ul>
-  </div>
+  <!-- Table -->
+  <table class="table">
+    <tr>
+      <th>First</th>
+      <th>Last</th>
+      <th>Type</th>
+    </tr>
+    <%= for customer <- @customers do %>
+      <tr>
+          <td><%= customer.last_name %></td>
+          <td><%= customer.first_name %></td>
+          <td><%= customer.type %></td>
+          <td><%= if (customer.active), do: "true", else: "false" %></td>
+          <td><%= link "View", to: customer_path(@conn, :show, customer) %> </td>
+          <td><%= link "Delete", to: customer_path(@conn, :delete, customer), method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>

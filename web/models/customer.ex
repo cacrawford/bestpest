@@ -29,7 +29,7 @@ defmodule Bestpest.Customer do
              :customer_addresses,
              :customer_phones,
              :customer_comments,
-             :customer_emails
+             :customer_emailspo
          ])
       |> cast(params, [
              :ref_id,
@@ -50,5 +50,20 @@ defmodule Bestpest.Customer do
       |> cast_assoc(:customer_comments, required: false)
       |> cast_assoc(:customer_emails, required: false)
       |> validate_required([:ref_id, :type])
+    end
+
+    def load(id) do
+      customer_addresses = Bestpest.CustomerAddress |> where(customer_id: ^id)
+      customer_comments = Bestpest.CustomerComment |> where(customer_id: ^id)
+      customer_emails = Bestpest.CustomerEmail |> where(customer_id: ^id)
+      customer_phones = Bestpest.CustomerPhone |> where(customer_id: ^id)
+
+      customer = Bestpest.Customer
+        |> where(id: ^id)
+        |> preload(customer_addresses: ^customer_addresses)
+        |> preload(customer_comments: ^customer_comments)
+        |> preload(customer_emails: ^customer_emails)
+        |> preload(customer_phones: ^customer_phones)
+        |> Repo.one!
     end
 end

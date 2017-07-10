@@ -1,0 +1,126 @@
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading"><h3><%= @customer.first_name %> <%= @customer.last_name %><h3/></div>
+
+    <!-- Table -->
+    <table class="table">
+        <tr>
+            <td>Reference ID</td>
+            <td><%= @customer.ref_id %></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Active?</td>
+            <td><%= if (@customer.active), do: "true", else: "false" %></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td><%= @customer.type %></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Billed?</td>
+            <td><%= if (@customer.billed), do: "true", else: "false" %></td>
+            <td></td>
+        </tr>
+
+        <%= if (@customer.cancel_date != nil) do %>
+            <tr>
+                <td>Date canceled</td>
+                <td><%= Bestpest.Helper.formatted_date(@customer.cancel_date) %></td>
+                <td><%= @customer.cancel_reason %></td>
+            </tr>
+
+        <% end %>
+
+        <%= if (@customer.corporate_code != nil) do %>
+            <tr>
+                <td>Corporate Code</td>
+                <td><%= @customer.corporate_code %></td>
+                <td></td>
+            </tr>
+        <% end %>
+
+        <%= if (@customer.subdivision != nil) do %>
+            <tr>
+                <td>Subdivision</td>
+                <td><%= @customer.subdivision %></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Signup Date</td>
+                <td><%= Bestpest.Helper.formatted_date(@customer.signup_date) %></td>
+                <td></td>
+            </tr>
+        <% end %>
+
+        <%= if (!Enum.empty? @customer.customer_addresses) do %>
+            <tr>
+                <td>Addresses</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <%= for address <- @customer.customer_addresses do %>
+                <tr>
+                    <td></td>
+                    <td>
+                        <%= address.first_name %> <%= address.last_name %><br>
+                        <%= if (address.attn != nil) do %>
+                            Attn: <%= address.attn %>
+                        <% end %>
+                        <%= address.street %><br>
+                        <%= address.city %>, <%= address.state %>  <%= address.zip %>
+                    </td>
+                    <td><%= address.type %></td>
+                </tr>
+            <% end %>
+        <% end %>
+
+        <%= if (!Enum.empty? @customer.customer_phones) do %>
+            <tr>
+                <td>Phone numbers</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <%= for phone <- @customer.customer_phones do %>
+                <tr>
+                    <td></td>
+                    <td><%= phone.phone_number %></td>
+                    <td><%= phone.type %><%= if (phone.primary), do: "*", else: "" %></td>
+                </tr>
+            <% end %>
+        <% end %>
+
+        <%= if (!Enum.empty? @customer.customer_emails) do %>
+            <tr>
+                <td>Email addresses</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <%= for email <- @customer.customer_emails do %>
+                <tr>
+                    <td></td>
+                    <td><%= email.email %><%= if (email.primary), do: "*", else: "" %></td>
+                    <td></td>
+                </tr>
+            <% end %>
+        <% end %>
+
+        <%= if (!Enum.empty? @customer.customer_comments) do %>
+            <tr>
+                <td>Comments</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <%= for comment <- @customer.customer_comments do %>
+                <tr>
+                    <td></td>
+                    <td><%= comment.comment %></td>
+                    <td><%= Bestpest.Helper.formatted_date(comment.date_added) %></td>
+                </tr>
+            <% end %>
+        <% end %>
+
+    </table>
+</div>

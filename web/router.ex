@@ -28,7 +28,7 @@ defmodule Bestpest.Router do
   scope "/customers", Bestpest do
     pipe_through :browser
 
-    get "/", CustomerController, :index
+    resources "/", CustomerController
   end
 
   scope "/api/v1", Bestpest do
